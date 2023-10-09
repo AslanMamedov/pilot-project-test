@@ -152,14 +152,18 @@ const CUpload: React.FC = () => {
 		);
 	}, []);
 
-	const onEditHandler = useCallback((selected: IData, { len, status }: FieldType) => {
-		if (!data) {
-			return;
-		}
-		setData((prevState) =>
-			prevState?.map((item) => (item.id === selected.id ? { ...item, len, status: status } : item))
-		);
-	}, []);
+	const onEditHandler = useCallback(
+		(selected: IData, { len, status }: FieldType) => {
+			if (!data) {
+				return;
+			}
+		
+			setData((prevState) =>
+				prevState?.map((item) => (item.id === selected.id ? { ...item, len, status: status } : item))
+			);
+		},
+		[data]
+	);
 
 	return (
 		<>
